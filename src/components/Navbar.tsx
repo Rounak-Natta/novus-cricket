@@ -43,7 +43,7 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR */}
-      <div className="absolute top-6 left-0 w-full z-50 flex justify-center pointer-events-none">
+      <div className="absolute top-3 left-0 w-full z-50 flex justify-center pointer-events-none">
         <div className="w-full max-w-[70%] pointer-events-auto">
           <div
             className={`
