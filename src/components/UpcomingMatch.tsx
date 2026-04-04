@@ -49,17 +49,28 @@ export default function UpcomingMatch() {
   return (
     <div className="w-full flex justify-center mt-4">
       <div className="w-[95%] md:w-[90%] px-[10px]">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-5 md:px-6 py-5 md:py-4 rounded-2xl md:rounded-full bg-[var(--secondary)]/95 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.4)] border border-white/10">
+        <div className="
+          flex flex-col md:flex-row items-center justify-between
+          gap-5 md:gap-6
+          px-5 md:px-6 py-5 md:py-4
+          rounded-2xl md:rounded-full
+          bg-[var(--secondary)]/95 backdrop-blur-xl
+          shadow-[0_10px_30px_rgba(0,0,0,0.4)]
+          border border-white/10
+        ">
 
           {/* LEFT */}
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 w-full md:w-auto">
 
-            <span className="text-xs md:text-sm font-semibold text-white/70 tracking-wide">
+            <span className="text-xs md:text-sm font-semibold text-white/70 tracking-wide text-center md:text-left">
               Upcoming Match
             </span>
 
             {/* Teams */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 md:gap-5 text-center">
+            <div className="
+              flex items-center justify-between md:justify-start
+              gap-3 md:gap-5 w-full md:w-auto
+            ">
               <Team name="NOVUS ROYALS PURULIA" logo="/logo/logo.png" />
 
               <span className="text-white/50 text-xs md:text-sm">vs</span>
@@ -68,11 +79,15 @@ export default function UpcomingMatch() {
             </div>
           </div>
 
-          {/* DIVIDER */}
+          {/* DIVIDER (unchanged desktop) */}
           <div className="hidden md:block h-10 w-[1px] bg-white/10" />
 
           {/* TIMER */}
-          <div className="flex items-center justify-center gap-3 md:gap-5 w-full md:w-auto">
+          <div className="
+            flex items-center justify-between md:justify-center
+            gap-2 md:gap-5
+            w-full md:w-auto
+          ">
             <TimeBox label="DAYS" value={timeLeft.days} />
             <Colon />
             <TimeBox label="HOURS" value={timeLeft.hours} />
@@ -91,11 +106,19 @@ export default function UpcomingMatch() {
 /* TEAM */
 function Team({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 min-w-0">
       <div className="relative w-8 h-8 md:w-10 md:h-10 shrink-0">
         <Image src={logo} alt={name} fill className="object-contain" />
       </div>
-      <span className="font-semibold text-white text-xs md:text-sm lg:text-base leading-tight max-w-[120px] md:max-w-none text-left">
+
+      {/* ONLY mobile truncation */}
+      <span className="
+        font-semibold text-white
+        text-xs md:text-sm lg:text-base
+        leading-tight
+        truncate md:whitespace-normal
+        max-w-[110px] md:max-w-none
+      ">
         {name}
       </span>
     </div>
@@ -109,7 +132,14 @@ function TimeBox({ label, value }: { label: string; value: string }) {
       <span className="text-[10px] md:text-xs text-white/60 tracking-wide">
         {label}
       </span>
-      <div className="px-3 py-1 rounded-md bg-[var(--brand)] text-black font-mono font-bold text-sm md:text-lg shadow-[0_4px_12px_rgba(245,176,66,0.4)]">
+      <div className="
+        px-2 md:px-3 py-1
+        rounded-md
+        bg-[var(--brand)]
+        text-black font-mono font-bold
+        text-sm md:text-lg
+        shadow-[0_4px_12px_rgba(245,176,66,0.4)]
+      ">
         {value}
       </div>
     </div>
@@ -118,5 +148,7 @@ function TimeBox({ label, value }: { label: string; value: string }) {
 
 /* COLON */
 function Colon() {
-  return <span className="text-sm md:text-lg font-bold text-white/40">:</span>;
+  return (
+    <span className="text-sm md:text-lg font-bold text-white/40">:</span>
+  );
 }

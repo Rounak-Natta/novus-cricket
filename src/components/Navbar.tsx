@@ -43,7 +43,7 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR */}
-      <div className="absolute top-3 left-0 w-full z-50 flex justify-center pointer-events-none">
+      <div className="absolute top-6 left-0 w-full z-50 flex justify-center pointer-events-none">
         <div className="w-full max-w-[70%] pointer-events-auto">
           <div
             className={`
@@ -64,7 +64,7 @@ export default function Navbar() {
               {navItems.map((item) =>
                 item.type === "logo" ? (
                   <Link key="logo" href="/" className="group">
-                    <div className="relative w-20 h-20 transition-all duration-300 group-hover:scale-110">
+                    <div className="relative w-25 h-25 transition-all duration-300 group-hover:scale-110">
                       <Image
                         src="/logo/logo.png"
                         alt="Logo"
@@ -80,30 +80,13 @@ export default function Navbar() {
                     href={item.href!}
                     className="group relative text-[13px] font-semibold uppercase tracking-[0.15em] text-white/80 transition-all duration-300"
                   >
-                    {/* text */}
                     <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--brand)]">
                       {item.name}
                     </span>
 
-                    {/* animated underline */}
-                    <span
-                      className="
-                        absolute left-0 -bottom-1 h-[2px] w-0
-                        bg-[var(--brand)]
-                        transition-all duration-300 ease-out
-                        group-hover:w-full
-                      "
-                    />
+                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[var(--brand)] transition-all duration-300 ease-out group-hover:w-full" />
 
-                    {/* soft glow on hover */}
-                    <span
-                      className="
-                        absolute inset-0 rounded-md opacity-0
-                        bg-[var(--brand)]/10 blur-md
-                        transition-opacity duration-300
-                        group-hover:opacity-100
-                      "
-                    />
+                    <span className="absolute inset-0 rounded-md opacity-0 bg-[var(--brand)]/10 blur-md transition-opacity duration-300 group-hover:opacity-100" />
                   </Link>
                 )
               )}
@@ -115,6 +98,10 @@ export default function Navbar() {
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
 
+              {/* empty spacer instead of centered logo */}
+              <div className="w-6" />
+
+              {/* logo moved to right */}
               <Link href="/">
                 <div className="relative w-12 h-12">
                   <Image
@@ -126,8 +113,6 @@ export default function Navbar() {
                   />
                 </div>
               </Link>
-
-              <div className="w-6" />
             </div>
           </div>
         </div>
@@ -162,13 +147,7 @@ export default function Navbar() {
                     <Link
                       href={link.href!}
                       onClick={() => setIsOpen(false)}
-                      className="
-                        block py-4 text-sm font-semibold uppercase
-                        text-white/80
-                        hover:text-[var(--brand)]
-                        border-b border-white/10
-                        transition-all duration-300
-                      "
+                      className="block py-4 text-sm font-semibold uppercase text-white/80 hover:text-[var(--brand)] border-b border-white/10 transition-all duration-300"
                     >
                       {link.name}
                     </Link>

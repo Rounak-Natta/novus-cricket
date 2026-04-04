@@ -10,22 +10,21 @@ export default function Preloader() {
 
   useEffect(() => {
     let value = 0;
-
     const interval = setInterval(() => {
       value += Math.random() * 6 + 3;
-
       if (value >= 100) {
         value = 100;
         clearInterval(interval);
-
-        setTimeout(() => setDone(true), 600);
+        setTimeout(() => setDone(true), 500);
       }
-
       setProgress(Math.floor(value));
     }, 80);
-
     return () => clearInterval(interval);
   }, []);
+
+  const radius = 40;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference * (1 - progress / 100);
 
   return (
     <AnimatePresence>
@@ -33,102 +32,95 @@ export default function Preloader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden"
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black"
         >
-          {/* Background */}
-          <motion.div
-            animate={{ scale: [1.05, 1.1] }}
-            transition={{ duration: 4, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
+          {/* Subtle background image with dark overlay */}
+          <div className="absolute inset-0">
             <Image
               src="/images/bg.png"
-              alt="bg"
+              alt=""
               fill
               priority
-              className="object-cover"
+              className="object-cover opacity-40"
             />
-          </motion.div>
-
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/85 backdrop-blur-xl" />
-
-          {/* Content */}
-          <div className="relative flex flex-col items-center gap-10">
-
-            {/* LOGO + RING */}
-            <div className="relative flex items-center justify-center">
-
-              {/* rotating ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute w-40 h-40 rounded-full border border-[var(--brand)]/30"
-              />
-
-              {/* glowing ring */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0.4, 0.8, 0.4],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
-                className="absolute w-32 h-32 rounded-full border border-[var(--brand)]/60"
-              />
-
-              {/* Logo */}
-              <motion.div
-                initial={{ scale: 0.6, opacity: 0, filter: "blur(10px)" }}
-                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 1.2 }}
-                className="relative w-20 h-20 md:w-24 md:h-24"
-              >
-                <Image
-                  src="/logo/logo.png"
-                  alt="logo"
-                  fill
-                  className="object-contain drop-shadow-[0_0_30px_rgba(245,176,66,0.6)]"
-                />
-              </motion.div>
-
-            </div>
-
-            {/* PERCENTAGE (center focus now) */}
-            <motion.div
-              key={progress}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-white font-mono text-lg tracking-widest"
-            >
-              {progress}%
-            </motion.div>
-
-            {/* subtle text */}
-            <motion.p
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-white/50 text-xs tracking-[0.3em] uppercase"
-            >
-              Loading Experience
-            </motion.p>
-
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
           </div>
 
-          {/* exit zoom */}
+          {/* Main content */}
+          <div className="relative z-10 flex flex-col items-center gap-8 px-6">
+            {/* Logo with subtle scale animation */}
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              className="relative w-16 h-16 md:w-20 md:h-20"
+            >
+              <Image
+                src="/logo/logo.png"
+                alt="Logo"
+                fill
+                className="object-contain"
+              />
+            </motion.div>
+
+            {/* Thin progress ring and percentage */}
+            <div className="relative flex items-center justify-center">
+              <svg className="w-28 h-28 -rotate-90" viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r={radius}
+                  fill="none"
+                  stroke="rgba(255,255,255,0.1)"
+                  strokeWidth="1"
+                />
+                <motion.circle
+                  cx="50"
+                  cy="50"
+                  r={radius}
+                  fill="none"
+                  stroke="rgba(255,255,255,0.7)"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={strokeDashoffset}
+                  initial={{ strokeDashoffset: circumference }}
+                  animate={{ strokeDashoffset }}
+                  transition={{ duration: 0.1 }}
+                />
+              </svg>
+              <div className="absolute text-white/80 text-lg font-light tracking-wide">
+                {progress}
+              </div>
+            </div>
+
+            {/* Loading label */}
+            <motion.div
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text-white/40 text-[11px] uppercase tracking-[0.3em] font-light"
+            >
+              Loading
+            </motion.div>
+
+            {/* Minimal decorative line */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="w-12 h-px bg-white/20 origin-left"
+            />
+          </div>
+
+          {/* Smooth exit fade */}
           {done && (
             <motion.div
-              initial={{ scale: 1 }}
-              animate={{ scale: 1.2 }}
-              transition={{ duration: 1 }}
-              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="absolute inset-0 bg-black pointer-events-none"
             />
           )}
         </motion.div>

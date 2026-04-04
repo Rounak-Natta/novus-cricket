@@ -21,8 +21,8 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <section className="relative w-full pt-[10px] px-[5px]">
-      <div className="relative h-[95vh] overflow-hidden rounded-xl">
+    <section className="relative w-full pt-[25px] px-[10px]">
+      <div className="relative h-[90vh] overflow-hidden rounded-xl">
 
         {/* Slides */}
         <AnimatePresence mode="wait">
