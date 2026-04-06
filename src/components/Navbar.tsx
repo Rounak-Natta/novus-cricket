@@ -94,26 +94,26 @@ export default function Navbar() {
 
             {/* MOBILE */}
             <div className="md:hidden flex items-center justify-between w-full">
-              <button onClick={() => setIsOpen(!isOpen)} className="z-50 text-white">
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
+  
+  {/* LEFT → Logo */}
+  <Link href="/">
+    <div className="relative w-12 h-12">
+      <Image
+        src="/logo/logo.png"
+        alt="Logo"
+        fill
+        priority
+        className="object-contain"
+      />
+    </div>
+  </Link>
 
-              {/* empty spacer instead of centered logo */}
-              <div className="w-6" />
+  {/* RIGHT → Hamburger */}
+  <button onClick={() => setIsOpen(!isOpen)} className="z-50 text-white">
+    {isOpen ? <X size={24} /> : <Menu size={24} />}
+  </button>
 
-              {/* logo moved to right */}
-              <Link href="/">
-                <div className="relative w-12 h-12">
-                  <Image
-                    src="/logo/logo.png"
-                    alt="Logo"
-                    fill
-                    priority
-                    className="object-contain"
-                  />
-                </div>
-              </Link>
-            </div>
+</div>
           </div>
         </div>
       </div>
@@ -133,7 +133,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25 }}
-              className="absolute right-0 top-0 h-full w-64 bg-[var(--secondary)] shadow-2xl"
+              className="absolute right-0 top-0 h-full w-64 bg-(--secondary) shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex flex-col pt-24 px-6 gap-6">
