@@ -69,17 +69,8 @@ export default function PlayersSection() {
   }, []);
 
   return (
-    <section className="w-full py-24 px-4 md:px-12 bg-gradient-to-br from-[#ffb85b] via-[#ffa63d] to-[#ff8c00] relative overflow-hidden">
-      {/* Background dotted pattern - more visible */}
-      <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #fff 2px, transparent 1px)`,
-          backgroundSize: "28px 28px",
-        }}
-      />
-
-      {/* Decorative arc - top left (more intense) */}
+    <section className="w-full py-24 px-4 md:px-12 relative overflow-hidden">
+      {/* Decorative arc - top left */}
       <svg
         className="absolute top-6 left-6 w-56 h-56 text-white/30 pointer-events-none"
         viewBox="0 0 200 200"
@@ -101,7 +92,7 @@ export default function PlayersSection() {
         />
       </svg>
 
-      {/* Decorative arc - bottom right (more intense) */}
+      {/* Decorative arc - bottom right */}
       <svg
         className="absolute bottom-6 right-6 w-72 h-72 text-white/25 pointer-events-none"
         viewBox="0 0 300 300"
@@ -127,7 +118,7 @@ export default function PlayersSection() {
 
       {/* MAIN CARD */}
       <div className="relative max-w-7xl mx-auto rounded-[2.5rem] bg-white/80 backdrop-blur-md border border-white/50 shadow-2xl overflow-hidden p-6 md:p-10 transition-all duration-300">
-        {/* Inner dashed border - more visible */}
+        {/* Inner dashed border */}
         <div className="absolute inset-5 rounded-[2rem] border-2 border-dashed border-white/40 pointer-events-none" />
 
         {/* Subtle arc inside card - top right */}
@@ -246,7 +237,7 @@ export default function PlayersSection() {
 
           {/* RIGHT: THUMBNAIL LIST */}
           <div className="space-y-3 relative">
-            {/* small dotted accent above list */}
+            {/* small accent above list */}
             <div className="absolute -top-4 right-0 w-12 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
 
             {players.map((p, i) => (
