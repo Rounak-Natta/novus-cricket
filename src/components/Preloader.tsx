@@ -38,7 +38,7 @@ export default function Preloader() {
           {/* Subtle background image with dark overlay */}
           <div className="absolute inset-0">
             <Image
-              src="/images/bg.png"
+              src="/images/prebg.png"
               alt=""
               fill
               priority
