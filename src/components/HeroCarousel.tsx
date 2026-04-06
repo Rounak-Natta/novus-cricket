@@ -19,12 +19,13 @@ export default function HeroCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 3500);
+    }, 4000); // slightly slower = premium feel
     return () => clearInterval(interval);
   }, []);
 
   return (
-<section className="relative w-full mt-0 md:mt-[15px] px-0 md:px-[6px]">      
+    <section className="relative w-full mt-0 md:mt-[15px] px-0 md:px-[6px]">
+
       {/* HERO CONTAINER */}
       <div className="relative h-[100vh] md:h-[97vh] overflow-hidden rounded-none md:rounded-4xl">
 
@@ -32,10 +33,10 @@ export default function HeroCarousel() {
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
             className="absolute inset-0"
           >
             <Image
@@ -49,61 +50,41 @@ export default function HeroCarousel() {
           </motion.div>
         </AnimatePresence>
 
-        {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
-
-        {/* GLOW */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_80%,rgba(245,176,66,0.12),transparent_60%)] pointer-events-none" />
+        {/* BOTTOM OVERLAY ONLY */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
         {/* CONTENT */}
-        <div className="absolute inset-0 flex items-end px-6 md:px-10 pb-10">
-          <div className="max-w-xl">
+        <div className="absolute inset-0 flex items-end px-6 md:px-12 pb-12">
+          <div className="max-w-2xl">
 
-            <motion.h1
-              key={`title-${index}`}
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.7 }}
-              className="text-3xl md:text-5xl font-bold text-white leading-tight"
-            >
-              Novus Cricket
-            </motion.h1>
-
-            <motion.p
-              key={`desc-${index}`}
-              initial={{ y: 25, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="mt-3 text-white/75 text-sm md:text-base"
-            >
-              Experience cricket like never before — fast, smart, and immersive.
-            </motion.p>
-
-            <motion.button
-              key={`btn-${index}`}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 px-6 py-3 bg-primary text-black font-semibold rounded-md transition hover:bg-primary-dark"
-            >
-              Explore Matches
-            </motion.button>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={index}
+                initial={{ y: 60, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{
+                  duration: 0.9,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] tracking-tight"
+              >
+                FEEL THE HEAT, <br /> FEAR THE FIRE
+              </motion.h1>
+            </AnimatePresence>
 
           </div>
         </div>
 
-        {/* INDICATORS */}
+        {/* MINIMAL INDICATORS */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
           {slides.map((_, i) => (
             <div
               key={i}
-              className={`h-[3px] rounded-full transition-all duration-500 ${
+              className={`h-[2px] rounded-full transition-all duration-500 ${
                 i === index
-                  ? "w-10 bg-primary shadow-[0_0_8px_rgba(245,176,66,0.6)]"
-                  : "w-5 bg-white/30"
+                  ? "w-8 bg-white"
+                  : "w-4 bg-white/30"
               }`}
             />
           ))}
