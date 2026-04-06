@@ -70,3 +70,18 @@ body {
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(12deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(12deg);
+  }
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
