@@ -48,7 +48,7 @@ const slides = [
 ];
 
 export default function PlayerSlider() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const numSlides = slides.length;
 
   const finalXOffset = `-${((numSlides - 1) * 100) / numSlides}%`;
@@ -65,10 +65,10 @@ export default function PlayerSlider() {
 
   return (
     <section
-  ref={ref}
-  className="relative bg-[var(--bg)]"
-  style={{ height: sectionHeight }}
->
+      ref={ref}
+      className="relative bg-[var(--bg)]"
+      style={{ height: sectionHeight, position: "relative" }}
+    >
       {/* 🔵 Dotted pattern background */}
       <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
         <div
@@ -156,8 +156,9 @@ function Slide({ slide, progress, index }: any) {
             src={slide.image}
             alt="player"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-contain scale-110 group-hover:scale-[1.15] transition-transform duration-700 drop-shadow-[0_40px_100px_rgba(0,0,0,0.25)]"
-            priority
+            priority={index === 0}
           />
         </div>
       </div>
