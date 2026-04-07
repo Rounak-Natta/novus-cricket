@@ -19,7 +19,7 @@ export default function PremiumNewsGrid() {
     <section className="w-full px-4 md:px-10 py-10">
       
       <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-wide">
-        N R P Updates & News
+        N. R. P. Updates & News
       </h2>
 
       {/* MOBILE */}
