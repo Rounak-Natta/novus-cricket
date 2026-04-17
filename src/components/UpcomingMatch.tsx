@@ -48,13 +48,13 @@ export default function UpcomingMatch() {
 
   return (
     <div className="w-full flex justify-center mt-4">
-      <div className="w-[95%] md:w-[90%] px-[10px]">
+      <div className="w-[95%] md:w-[90%] px-2.5">
         <div className="
           flex flex-col md:flex-row items-center justify-between
           gap-5 md:gap-6
           px-5 md:px-6 py-5 md:py-4
           rounded-2xl md:rounded-full
-          bg-[var(--secondary)]/95 backdrop-blur-xl
+          bg-(--secondary)/95 backdrop-blur-xl
           shadow-[0_10px_30px_rgba(0,0,0,0.4)]
           border border-white/10
         ">
@@ -80,7 +80,7 @@ export default function UpcomingMatch() {
           </div>
 
           {/* DIVIDER (unchanged desktop) */}
-          <div className="hidden md:block h-10 w-[1px] bg-white/10" />
+          <div className="hidden md:block h-10 w-px bg-white/10" />
 
           {/* TIMER */}
           <div className="
@@ -117,7 +117,7 @@ function Team({ name, logo }: { name: string; logo: string }) {
         text-xs md:text-sm lg:text-base
         leading-tight
         truncate md:whitespace-normal
-        max-w-[110px] md:max-w-none
+        max-w-27.5 md:max-w-none
       ">
         {name}
       </span>
@@ -135,7 +135,7 @@ function TimeBox({ label, value }: { label: string; value: string }) {
       <div className="
         px-2 md:px-3 py-1
         rounded-md
-        bg-[var(--brand)]
+        bg-primary
         text-black font-mono font-bold
         text-sm md:text-lg
         shadow-[0_4px_12px_rgba(245,176,66,0.4)]

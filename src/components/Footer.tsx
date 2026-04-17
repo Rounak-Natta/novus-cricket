@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="w-full mt-[50px]">
+    <footer className="w-full mt-12.5">
 
       {/* Top Links Bar */}
       <div className="bg-secondary text-white text-xs md:text-sm py-3 px-4">

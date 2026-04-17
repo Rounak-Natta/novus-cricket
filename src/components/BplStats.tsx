@@ -57,7 +57,7 @@ const StatBox = ({ value, label }: StatBoxProps) => {
         </svg>
       </div>
       <div className="relative z-10">
-        <div className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+        <div className="text-2xl font-bold bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
           {value}
         </div>
         <div className="text-xs font-medium text-gray-400 uppercase tracking-wide mt-1">
@@ -102,7 +102,7 @@ const HighlightCard = ({
           </svg>
         </div>
         <div className="relative z-10 flex items-center gap-4">
-          <div className={`relative ${sizeClasses[imageSize]} flex-shrink-0`}>
+          <div className={`relative ${sizeClasses[imageSize]} shrink-0`}>
             <Image
               src={imageSrc}
               alt={name}
@@ -112,7 +112,7 @@ const HighlightCard = ({
             />
           </div>
           <div>
-            <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            <div className="text-2xl font-bold bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
               {value}
             </div>
             <div className="text-xs font-medium text-gray-400 uppercase tracking-wide">
@@ -140,7 +140,7 @@ const HighlightCard = ({
         </svg>
       </div>
       <div className="relative z-10">
-        <div className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+        <div className="text-3xl font-bold bg-linear-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
           {value}
         </div>
         <div className="text-xs font-medium text-gray-400 uppercase tracking-wide mt-1">
@@ -158,28 +158,28 @@ const HighlightCard = ({
 
 export default function IPLStats() {
   return (
-    <section className="w-full py-12 px-4 md:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <section className="w-full py-12 px-4 md:px-8 bg-linear-to-br from-gray-50 via-white to-gray-50">
       <div className="max-w-6xl mx-auto">
 
         {/* Title with accent */}
         <div className="mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight bg-linear-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
             IPL 2026 IN NUMBERS
           </h2>
-          <div className="h-0.5 w-20 bg-gradient-to-r from-primary/60 to-transparent mt-2" />
+          <div className="h-0.5 w-20 bg-linear-to-r from-primary/60 to-transparent mt-2" />
         </div>
 
         {/* Top Stats - Premium centered */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
           {statsTop.map((item, i) => (
             <div key={i} className="text-center group">
-              <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-gray-900 to-gray-500 bg-clip-text text-transparent tracking-tight">
+              <div className="text-4xl md:text-5xl font-black bg-linear-to-r from-gray-900 to-gray-500 bg-clip-text text-transparent tracking-tight">
                 {item.value}
               </div>
               <div className="text-sm font-medium text-gray-400 uppercase tracking-wide mt-2">
                 {item.label}
               </div>
-              <div className="w-8 h-px bg-gradient-to-r from-primary/40 to-transparent mx-auto mt-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="w-8 h-px bg-linear-to-r from-primary/40 to-transparent mx-auto mt-3 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>
@@ -196,7 +196,7 @@ export default function IPLStats() {
 
           {/* Center Players - Premium overlay effect */}
           <div className="relative flex justify-center items-center py-8">
-            <div className="relative w-[280px] md:w-[340px] h-[280px] md:h-[340px]">
+            <div className="relative w-70 md:w-85 h-70 md:h-85">
               {/* Glow behind center player */}
               <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl" />
               
@@ -242,7 +242,7 @@ export default function IPLStats() {
             <div className="w-full border-t border-gray-200" />
           </div>
           <div className="relative flex justify-center">
-            <div className="h-2 w-12 bg-gradient-to-r from-primary/40 via-primary to-primary/40 rounded-full" />
+            <div className="h-2 w-12 bg-linear-to-r from-primary/40 via-primary to-primary/40 rounded-full" />
           </div>
         </div>
 

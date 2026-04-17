@@ -238,7 +238,7 @@ export default function PlayersSection() {
           {/* RIGHT: THUMBNAIL LIST */}
           <div className="space-y-3 relative">
             {/* small accent above list */}
-            <div className="absolute -top-4 right-0 w-12 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+            <div className="absolute -top-4 right-0 w-12 h-px bg-linear-to-r from-transparent via-white/50 to-transparent" />
 
             {players.map((p, i) => (
               <motion.button
@@ -286,7 +286,7 @@ export default function PlayersSection() {
         </div>
 
         {/* Bottom subtle decorative line */}
-        <div className="absolute bottom-0 left-1/3 right-1/3 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+        <div className="absolute bottom-0 left-1/3 right-1/3 h-px bg-linear-to-r from-transparent via-white/60 to-transparent" />
       </div>
     </section>
   );

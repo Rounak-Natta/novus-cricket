@@ -47,17 +47,17 @@ export default function Navbar() {
         <div className="w-full max-w-[70%] pointer-events-auto">
           <div
             className={`
-              relative flex items-center justify-center h-[60px]
+              relative flex items-center justify-center h-15
               px-4 md:px-0 rounded-full
               backdrop-blur-2xl
               border border-white/10
               shadow-[0_10px_40px_rgba(0,0,0,0.6)]
               transition-all duration-500
-              ${scrolled ? "bg-[var(--secondary)]/95" : "bg-[var(--secondary)]/85"}
+              ${scrolled ? "bg-(--secondary)/95" : "bg-(--secondary)/85"}
             `}
           >
             {/* subtle inner glow */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-[var(--brand)]/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <div className="absolute inset-0 rounded-full bg-linear-to-r from-transparent via-(--brand)/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             {/* DESKTOP */}
             <div className="hidden md:flex items-center gap-10">
@@ -80,13 +80,13 @@ export default function Navbar() {
                     href={item.href!}
                     className="group relative text-[13px] font-semibold uppercase tracking-[0.15em] text-white/80 transition-all duration-300"
                   >
-                    <span className="relative z-10 transition-colors duration-300 group-hover:text-[var(--brand)]">
+                    <span className="relative z-10 transition-colors duration-300 group-hover:text-primary">
                       {item.name}
                     </span>
 
-                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-[var(--brand)] transition-all duration-300 ease-out group-hover:w-full" />
+                    <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-primary transition-all duration-300 ease-out group-hover:w-full" />
 
-                    <span className="absolute inset-0 rounded-md opacity-0 bg-[var(--brand)]/10 blur-md transition-opacity duration-300 group-hover:opacity-100" />
+                    <span className="absolute inset-0 rounded-md opacity-0 bg-(--brand)/10 blur-md transition-opacity duration-300 group-hover:opacity-100" />
                   </Link>
                 )
               )}
@@ -147,7 +147,7 @@ export default function Navbar() {
                     <Link
                       href={link.href!}
                       onClick={() => setIsOpen(false)}
-                      className="block py-4 text-sm font-semibold uppercase text-white/80 hover:text-[var(--brand)] border-b border-white/10 transition-all duration-300"
+                      className="block py-4 text-sm font-semibold uppercase text-white/80 hover:text-primary border-b border-white/10 transition-all duration-300"
                     >
                       {link.name}
                     </Link>
