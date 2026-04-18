@@ -24,7 +24,7 @@ const Page = () => {
       <main className="w-full bg-white">
 
         {/* ================= HERO ================= */}
-        <section className="relative w-full h-[75vh] min-h-[520px] flex items-center justify-center text-center px-6 overflow-hidden">
+        <section className="relative w-full h-[75vh] min-h-130 flex items-center justify-center text-center px-6 overflow-hidden">
           {/* Background Image - Optimized with priority and quality */}
           <Image
             src="/images/abtbnr.png"
@@ -37,7 +37,7 @@ const Page = () => {
           />
           
           {/* Gradient Overlay - smoother transition */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/60 to-black/40" />
 
           <div className="relative z-10 max-w-4xl">
             {/* Decorative element */}
@@ -47,7 +47,7 @@ const Page = () => {
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
               When the stakes rise,
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/70">
+              <span className="block text-transparent bg-clip-text bg-linear-to-r from-primary to-primary/70">
                 so do the warriors.
               </span>
             </h1>
@@ -70,7 +70,7 @@ const Page = () => {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image with subtle lift effect */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-[1.02]">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10" />
+              <div className="absolute inset-0 bg-linear-to-tr from-primary/20 to-transparent z-10" />
               <Image
                 src="/images/1.png"
                 alt="Novus Royals cricket training in Purulia"
@@ -109,7 +109,7 @@ const Page = () => {
         </section>
 
         {/* ================= VISION & MISSION ================= */}
-        <section className="bg-gradient-to-b from-gray-50 to-white py-20 lg:py-28">
+        <section className="bg-linear-to-b from-gray-50 to-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide mb-4">
@@ -124,7 +124,7 @@ const Page = () => {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Vision Card */}
               <div className="group relative p-8 rounded-2xl bg-white border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/40 rounded-t-2xl" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-primary to-primary/40 rounded-t-2xl" />
                 <div className="text-5xl mb-4">🎯</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">Vision</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -134,7 +134,7 @@ const Page = () => {
 
               {/* Mission Card */}
               <div className="group relative p-8 rounded-2xl bg-white border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/40 rounded-t-2xl" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-primary to-primary/40 rounded-t-2xl" />
                 <div className="text-5xl mb-4">🚀</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">Mission</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -182,7 +182,7 @@ const Page = () => {
                 key={i}
                 className="group relative p-8 rounded-2xl bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${item.color} rounded-t-2xl`} />
+                <div className={`absolute top-0 left-0 w-full h-1 bg-linear-to-r ${item.color} rounded-t-2xl`} />
                 <div className="text-5xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{item.desc}</p>
@@ -200,7 +200,7 @@ const Page = () => {
         </section>
 
         {/* ================= SPONSORS ================= */}
-        <section className="bg-gradient-to-b from-gray-50 to-white py-20 lg:py-28">
+        <section className="bg-linear-to-b from-gray-50 to-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide mb-4">
