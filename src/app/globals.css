@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f8e0c2;
+  --bg: #fff;
   --fg: #ffffff;
 
   --brand: #f5b042;
   --brand-strong: #d48f2b;
+
   --secondary: #60191d;
   --secondary-light: #8a2a2f;
 
@@ -47,12 +48,10 @@ html {
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--fg);
+  color: var(--secondary);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-
-
 
 @theme inline {
   --color-background: var(--bg);
@@ -60,6 +59,9 @@ body {
 
   --color-primary: var(--brand);
   --color-primary-dark: var(--brand-strong);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
 
   --color-accent: var(--accent);
 
@@ -70,25 +72,31 @@ body {
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
+
 @keyframes shine {
   0% {
     transform: translateX(-100%) rotate(12deg);
   }
+
   100% {
     transform: translateX(100%) rotate(12deg);
   }
 }
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 @keyframes marquee {
   from {
     transform: translateX(0%);
   }
+
   to {
     transform: translateX(-50%);
   }
