@@ -47,7 +47,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: url(/images/prebg.jpg);
+  background-position: center;
+  background-size: cover;
   color: var(--secondary);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;

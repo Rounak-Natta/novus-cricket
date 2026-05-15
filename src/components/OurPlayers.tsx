@@ -122,50 +122,47 @@ export default function PlayersSection() {
   }, []);
 
   return (
-    <section className="py-8 md:py-10">
+    <section className="relative overflow-hidden py-8 md:py-10">
+      {/* PREMIUM BACKGROUND GLOW - Same style as TeamShowcase */}
+      <div className="absolute left-1/2 top-0 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-primary/10 blur-[110px]" />
+      
+      {/* Additional background glow layers */}
+      <div className="absolute right-0 bottom-0 h-[300px] w-[300px] rounded-full bg-primary/5 blur-[90px]" />
+      <div className="absolute left-0 bottom-20 h-[250px] w-[250px] rounded-full bg-white/30 blur-[80px]" />
 
-      <div className="mx-auto max-w-7xl px-4">
-
+      <div className="relative mx-auto max-w-7xl px-4">
+        {/* MAIN CARD with Glassmorphism */}
         <div
-          className="overflow-hidden rounded-[2rem] border border-secondary/10"
+          className="relative overflow-hidden rounded-[2rem] border border-secondary/10 bg-white/[0.28] backdrop-blur-2xl transition-all duration-300"
           style={{
-            boxShadow:
-              "0 10px 30px rgba(96,25,29,0.05)",
+            boxShadow: "0 15px 45px rgba(96,25,29,0.08), inset 0 1px 0 rgba(255,255,255,0.22)",
           }}
         >
+          {/* Inner gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/[0.03]" />
 
-          <div className="grid lg:grid-cols-[1fr_320px]">
-
+          <div className="relative z-10 grid lg:grid-cols-[1fr_320px]">
             {/* LEFT */}
             <div className="relative p-6 md:p-8 lg:p-10">
-
               {/* TOP */}
               <div className="mb-8 flex items-center gap-4">
-
                 <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-primary">
                   Auction Squad
                 </span>
-
                 <div className="h-px flex-1 bg-gradient-to-r from-secondary-light/30 to-transparent" />
               </div>
 
               <div className="grid items-center gap-10 lg:grid-cols-[1fr_320px]">
-
                 {/* CONTENT */}
                 <div className="max-w-xl">
-
                   <AnimatePresence mode="wait">
-
                     <motion.div
                       key={player.name}
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -12 }}
-                      transition={{
-                        duration: 0.22,
-                      }}
+                      transition={{ duration: 0.22 }}
                     >
-
                       <p className="mb-3 text-sm font-medium text-secondary-light">
                         Team 2026
                       </p>
@@ -174,7 +171,7 @@ export default function PlayersSection() {
                         {player.name}
                       </h2>
 
-                      <div className="mt-5 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
+                      <div className="mt-5 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary backdrop-blur-sm">
                         {player.role}
                       </div>
 
@@ -184,63 +181,41 @@ export default function PlayersSection() {
 
                       {/* CONTROLS */}
                       <div className="mt-8 flex items-center gap-3">
-
                         <button
                           onClick={prevPlayer}
                           aria-label="Previous Player"
-                          className="flex h-11 w-11 items-center justify-center rounded-full border border-secondary/10 text-secondary transition-all duration-300 hover:border-primary hover:text-primary"
+                          className="flex h-11 w-11 items-center justify-center rounded-full border border-secondary/10 bg-white/20 text-secondary backdrop-blur-sm transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:text-primary"
                         >
-                          <ChevronLeft
-                            size={18}
-                            strokeWidth={2.4}
-                          />
+                          <ChevronLeft size={18} strokeWidth={2.4} />
                         </button>
 
                         <button
                           onClick={nextPlayer}
                           aria-label="Next Player"
-                          className="flex h-11 w-11 items-center justify-center rounded-full border border-secondary/10 text-secondary transition-all duration-300 hover:border-primary hover:text-primary"
+                          className="flex h-11 w-11 items-center justify-center rounded-full border border-secondary/10 bg-white/20 text-secondary backdrop-blur-sm transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:text-primary"
                         >
-                          <ChevronRight
-                            size={18}
-                            strokeWidth={2.4}
-                          />
+                          <ChevronRight size={18} strokeWidth={2.4} />
                         </button>
-
                       </div>
                     </motion.div>
-
                   </AnimatePresence>
                 </div>
 
                 {/* IMAGE */}
                 <div className="relative flex items-center justify-center">
-
-                  {/* GLOW */}
-                  <div className="absolute h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+                  {/* Enhanced glow behind image */}
+                  <div className="absolute h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+                  <div className="absolute h-48 w-48 rounded-full bg-white/30 blur-2xl" />
 
                   <AnimatePresence mode="wait">
-
                     <motion.div
                       key={player.image}
-                      initial={{
-                        opacity: 0,
-                        scale: 0.96,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                      }}
-                      exit={{
-                        opacity: 0,
-                        scale: 0.96,
-                      }}
-                      transition={{
-                        duration: 0.22,
-                      }}
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{ duration: 0.22 }}
                       className="relative z-10 h-[300px] w-[240px] md:h-[360px] md:w-[280px]"
                     >
-
                       <Image
                         src={player.image}
                         alt={player.name}
@@ -250,21 +225,17 @@ export default function PlayersSection() {
                         fetchPriority={active === 0 ? "high" : "auto"}
                         quality={85}
                         sizes="(max-width: 768px) 240px, (max-width: 1200px) 280px, 320px"
-                        className="object-contain drop-shadow-[0_18px_40px_rgba(96,25,29,0.18)]"
+                        className="object-contain drop-shadow-[0_20px_50px_rgba(96,25,29,0.25)]"
                       />
-
                     </motion.div>
-
                   </AnimatePresence>
                 </div>
               </div>
             </div>
 
-            {/* SIDEBAR */}
-            <div className="border-l border-secondary/10 p-4">
-
-              <div className="no-scrollbar max-h-[520px] space-y-2 overflow-y-auto pr-1">
-
+            {/* SIDEBAR - with glassmorphism */}
+            <div className="border-l border-secondary/10 bg-white/[0.15] backdrop-blur-sm">
+              <div className="no-scrollbar max-h-[520px] space-y-2 overflow-y-auto p-4">
                 {players.map((p, i) => {
                   const isActive = active === i;
 
@@ -274,14 +245,12 @@ export default function PlayersSection() {
                       onClick={() => setActive(i)}
                       className={`flex w-full items-center gap-3 rounded-2xl border px-3 py-3 text-left transition-all duration-300 ${
                         isActive
-                          ? "border-primary/25 bg-primary/5"
-                          : "border-transparent hover:border-secondary/10"
+                          ? "border-primary/25 bg-primary/5 backdrop-blur-sm"
+                          : "border-transparent bg-white/10 hover:border-secondary/10 hover:bg-white/20"
                       }`}
                     >
-
                       {/* IMAGE */}
-                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl">
-
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-white/20">
                         <Image
                           src={p.image}
                           alt={p.name}
@@ -291,40 +260,31 @@ export default function PlayersSection() {
                           sizes="56px"
                           className="object-cover"
                         />
-
                       </div>
 
                       {/* TEXT */}
                       <div className="min-w-0 flex-1">
-
                         <h3
                           className={`truncate text-[15px] font-semibold transition-colors ${
-                            isActive
-                              ? "text-primary"
-                              : "text-secondary"
+                            isActive ? "text-primary" : "text-secondary"
                           }`}
                         >
                           {p.name}
                         </h3>
-
                         <p className="mt-0.5 text-xs text-secondary-light">
                           {p.role}
                         </p>
-
                       </div>
 
                       {/* DOT */}
                       <div
                         className={`h-2.5 w-2.5 rounded-full transition-all ${
-                          isActive
-                            ? "bg-primary"
-                            : "bg-secondary/20"
+                          isActive ? "bg-primary scale-100" : "bg-secondary/20 scale-75"
                         }`}
                       />
                     </button>
                   );
                 })}
-
               </div>
             </div>
           </div>
