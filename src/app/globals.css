@@ -47,12 +47,19 @@ html {
 
 body {
   margin: 0;
-  background: url(/images/prebg.jpg);
-  background-position: center;
+  min-height: 100vh;
+
+  background-image: url("/images/bgbg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+
   color: var(--secondary);
   font-family: var(--font-sans), system-ui, sans-serif;
+
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 @theme inline {

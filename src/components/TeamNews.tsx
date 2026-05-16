@@ -45,98 +45,60 @@ const VIDEOS: Video[] = [
 /* ================= MAIN ================= */
 
 export default function NewsSection() {
+  const handleViewAll = () => {
+    // Optional: navigate to videos page or open modal
+    console.log("View all videos clicked");
+  };
+
   return (
     <section className="relative overflow-hidden py-8 md:py-14">
-
       {/* SOFT GLOW */}
       <div className="absolute left-1/2 top-0 h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-primary/10 blur-[100px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-
         {/* HEADER */}
         <div className="mb-6 flex flex-col gap-5 md:mb-8 md:flex-row md:items-end md:justify-between">
-
           <div className="max-w-2xl">
-
-            <span
-              className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary"
-              style={{
-                boxShadow: "0 8px 24px rgba(245,176,66,0.10)",
-              }}
-            >
+            <span className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-primary shadow-[0_8px_24px_rgba(245,176,66,0.10)]">
               Latest Updates
             </span>
 
             <h2 className="mt-4 text-[2rem] font-black leading-[0.95] tracking-tight text-secondary md:text-[4rem]">
               N.R.P Media &
-              <span className="mt-1 block text-primary">
-                Match Stories
-              </span>
+              <span className="mt-1 block text-primary">Match Stories</span>
             </h2>
 
             <p className="mt-4 max-w-xl text-sm leading-6 text-secondary-light md:text-[15px]">
-              Exclusive match previews, documentaries,
-              behind-the-scenes moments, and squad stories.
+              Exclusive match previews, documentaries, behind-the-scenes
+              moments, and squad stories.
             </p>
           </div>
 
           {/* DESKTOP BUTTON */}
           <button
+            onClick={handleViewAll}
             className="hidden items-center gap-2 rounded-full border border-secondary/10 px-5 py-2.5 text-sm font-medium text-secondary transition-all duration-300 hover:border-primary/25 hover:text-primary md:flex"
-            style={{
-              boxShadow:
-                "0 10px 30px rgba(96,25,29,0.04)",
-            }}
           >
             View All
           </button>
-
         </div>
 
-        {/* MOBILE */}
-        <div className="space-y-3 md:hidden">
-
-          <NewsCard
-            item={VIDEOS[0]}
-            featured
-            mobile
-          />
-
-          <div className="grid grid-cols-2 gap-3">
-            {VIDEOS.slice(1, 5).map((video) => (
-              <NewsCard
-                key={video.title}
-                item={video}
-                mobile
-              />
-            ))}
+        {/* UNIFIED RESPONSIVE GRID - NO DUPLICATION */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
+          {/* FEATURED CARD */}
+          <div className="col-span-1 md:col-span-12 lg:col-span-7">
+            <NewsCard item={VIDEOS[0]} featured />
           </div>
 
+          {/* SIDE CARDS GRID */}
+          <div className="col-span-1 md:col-span-12 lg:col-span-5">
+            <div className="grid grid-cols-2 gap-4">
+              {VIDEOS.slice(1, 5).map((video) => (
+                <NewsCard key={video.title} item={video} />
+              ))}
+            </div>
+          </div>
         </div>
-
-        {/* DESKTOP */}
-        <div className="hidden grid-cols-12 gap-4 md:grid">
-
-          {/* FEATURED */}
-          <div className="col-span-12 lg:col-span-7">
-            <NewsCard
-              item={VIDEOS[0]}
-              featured
-            />
-          </div>
-
-          {/* SIDE GRID */}
-          <div className="col-span-12 grid grid-cols-2 gap-4 lg:col-span-5">
-            {VIDEOS.slice(1, 5).map((video) => (
-              <NewsCard
-                key={video.title}
-                item={video}
-              />
-            ))}
-          </div>
-
-        </div>
-
       </div>
     </section>
   );
@@ -147,115 +109,86 @@ export default function NewsSection() {
 const NewsCard = memo(function NewsCard({
   item,
   featured = false,
-  mobile = false,
 }: {
   item: Video;
   featured?: boolean;
-  mobile?: boolean;
 }) {
+  // Responsive sizes: mobile first, then md breakpoint
+  const cardHeight = featured
+    ? "h-[340px] md:h-[420px]"
+    : "h-[180px] md:h-[200px]";
+
+  const playButtonSize = featured
+    ? "h-11 w-11 md:h-14 md:w-14"
+    : "h-9 w-9 md:h-10 md:w-10";
+
+  const titleSize = featured
+    ? "text-xl md:text-3xl"
+    : "text-sm md:text-base";
+
+  const iconSize = featured ? "h-4 w-4 md:h-5 md:w-5" : "h-3 w-3 md:h-4 md:w-4";
+
+  // Optimized image sizes for responsive loading
+  const imageSizes = featured
+    ? "(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
+    : "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw";
+
   return (
     <article
-      className={`group relative overflow-hidden rounded-[1.5rem] border border-secondary/10 transition-all duration-300 ${
-        featured
-          ? mobile
-            ? "h-[340px]"
-            : "h-[420px]"
-          : mobile
-            ? "h-[180px]"
-            : "h-[200px]"
-      }`}
-      style={{
-        boxShadow:
-          "0 10px 30px rgba(96,25,29,0.05)",
-      }}
+      className={`group relative overflow-hidden rounded-[1.5rem] border border-secondary/10 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(96,25,29,0.08)] ${cardHeight}`}
     >
-
-      {/* IMAGE */}
+      {/* IMAGE with optimized loading */}
       <Image
         src={item.image}
         alt={item.title}
         fill
         priority={featured}
-        quality={82}
-        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        quality={85}
+        sizes={imageSizes}
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#22090c]/95 via-[#22090c]/30 to-transparent" />
+      {/* DYNAMIC GRADIENT OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#22090c]/90 via-[#22090c]/20 to-transparent transition-opacity duration-300 group-hover:via-[#22090c]/30" />
 
-      {/* CATEGORY */}
+      {/* CATEGORY BADGE */}
       <div className="absolute left-4 top-4 z-10">
-
-        <span
-          className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white backdrop-blur-xl"
-          style={{
-            boxShadow:
-              "0 8px 24px rgba(0,0,0,0.18)",
-          }}
-        >
+        <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.18)]">
           {item.category}
         </span>
-
       </div>
 
-      {/* PLAY BUTTON */}
+      {/* PLAY BUTTON with smooth scaling */}
       <div className="absolute inset-0 flex items-center justify-center">
-
         <div
-          className={`flex items-center justify-center rounded-full border border-white/15 bg-white/10 backdrop-blur-xl transition-transform duration-300 group-hover:scale-105 ${
-            mobile
-              ? "h-11 w-11"
-              : "h-14 w-14"
-          }`}
-          style={{
-            boxShadow:
-              "0 10px 30px rgba(0,0,0,0.25)",
-          }}
+          className={`flex items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 group-hover:scale-105 group-hover:border-white/30 group-hover:bg-white/15 ${playButtonSize}`}
         >
           <Play
-            className={`ml-0.5 fill-white text-white ${
-              mobile
-                ? "h-4 w-4"
-                : "h-5 w-5"
-            }`}
+            className={`ml-0.5 fill-white text-white ${iconSize}`}
+            aria-label="Play video"
           />
         </div>
-
       </div>
 
-      {/* CONTENT */}
+      {/* CONTENT SECTION */}
       <div className="absolute bottom-0 left-0 right-0 z-10 p-4 md:p-5">
-
         <h3
-          className={`font-black leading-tight tracking-tight text-white ${
-            featured
-              ? mobile
-                ? "max-w-sm text-xl"
-                : "max-w-lg text-3xl"
-              : mobile
-                ? "text-sm"
-                : "text-base"
-          }`}
-          style={{
-            textShadow:
-              "0 4px 20px rgba(0,0,0,0.35)",
-          }}
+          className={`font-black leading-tight tracking-tight text-white ${titleSize}`}
+          style={{ textShadow: "0 4px 20px rgba(0,0,0,0.35)" }}
         >
           {item.title}
         </h3>
 
-        {featured && !mobile && (
-          <p className="mt-3 max-w-md text-sm leading-6 text-white/75">
-            Experience the preparation, emotions,
-            and intensity shaping the season.
+        {featured && (
+          <p className="mt-3 hidden max-w-md text-sm leading-6 text-white/75 md:block">
+            Experience the preparation, emotions, and intensity shaping the
+            season.
           </p>
         )}
-
       </div>
 
-      {/* HOVER BORDER */}
-      <div className="absolute inset-0 rounded-[1.5rem] border border-transparent transition-all duration-300 group-hover:border-primary/20" />
-
+      {/* HOVER BORDER GLOW */}
+      <div className="absolute inset-0 rounded-[1.5rem] border-2 border-transparent transition-all duration-300 group-hover:border-primary/30" />
     </article>
   );
 });
