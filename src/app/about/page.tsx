@@ -37,6 +37,8 @@ const page = () => {
           <SocialGallery/>
       </section>
 
+      
+
       <Footer/>
 
     </main>

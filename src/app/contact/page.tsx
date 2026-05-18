@@ -1,4 +1,7 @@
+import Footer from '@/components/Footer';
 import HeroCarousel from '@/components/HeroCarousel';
+import MerchandiseMarquee from '@/components/MerchandiseMarquee';
+import SponsorshipContact from '@/components/SponsorshipContact';
 import React from 'react'
 
 const slides = [
@@ -17,6 +20,14 @@ const page = () => {
           slides={slides}
           interval={5000}/>
       </section>
+      <section className="relative z-10">
+                <MerchandiseMarquee />
+            </section>
+            <section className="relative z-10">
+                      <SponsorshipContact/>
+                  </section>
+
+                  <Footer/>
 
     </main>
   )
