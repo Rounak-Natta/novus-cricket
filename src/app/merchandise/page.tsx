@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
 import MerchandiseMarquee from "@/components/MerchandiseMarquee";
 import MerchandiseProducts from "@/components/MerchandiseProducts";
+import ShowcaseCards from "@/components/ShowcaseCards";
 
 const slides = [
   {
@@ -50,6 +51,16 @@ export default function MerchandisePage() {
       {/* Products */}
       <section className="relative z-10">
         <MerchandiseProducts />
+      </section>
+
+       {/* Marquee */}
+      <section className="relative z-10">
+        <MerchandiseMarquee />
+      </section>
+
+
+      <section className="relative z-10">
+        <ShowcaseCards/>
       </section>
 
       {/* Footer */}
