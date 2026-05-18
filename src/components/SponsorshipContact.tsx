@@ -21,7 +21,7 @@ export default function SponsorshipContact() {
         "
       />
 
-      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-[1280px] ">
         {/* ================= HEADER ================= */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
