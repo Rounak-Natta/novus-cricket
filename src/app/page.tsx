@@ -8,6 +8,16 @@ import Sponsors from "@/components/Sponsors";
 import TeamNews from "@/components/TeamNews";
 import UpcomingMatch from "@/components/UpcomingMatch";
 
+/* ================= HERO SLIDES ================= */
+
+const heroSlides = [
+  {
+    image: "/images/1.webp",
+    title: "FEEL THE HEAT,\nFEAR THE FIRE",
+    subtitle: "Official merchandise built for the true NRP supporters.",
+  },
+];
+
 /* ================= DIVIDER ================= */
 
 function SectionDivider() {
@@ -54,7 +64,9 @@ export default function Home() {
     <main className="overflow-x-hidden">
 
       {/* HERO */}
-      <HeroCarousel />
+      <HeroCarousel
+        slides={heroSlides}
+      />
 
       {/* UPCOMING MATCH */}
       <SectionDivider />
